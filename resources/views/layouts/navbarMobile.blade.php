@@ -10,6 +10,7 @@
       <div class="col-4 text-center menu">
         @if(Session::has('user'))
           <button type="button" name="button" onclick="window.location.href='{{ url('favorite') }}'"><i class="fas fa-heart"></i></button>
+          <button type="submit" name="button" onclick="window.location.href='{{ url('/message') }}'"><i class="fas fa-comments"></i></button>
           <button type="button" name="button" onclick="window.location.href='{{ url('profil') }}'"><i class="fas fa-user"></i></button>
           <button type="button" name="button" onclick="window.location.href='{{ url('cart') }}'"><i class="fas fa-shopping-bag"></i></button>
           <button type="submit" name="button" onclick="window.location.href='{{ url('logout') }}'"><i class="fas fa-sign-out-alt"></i></button>
@@ -28,7 +29,6 @@
     @if(session('active_status'))
       @if(session('active_status')->status_user_label == 'Seller')
       <li><a href="{{ url('/announce/historySeller') }}">My announces</a></li>
-      <li><a href="{{ url('/message') }}">Messages</a></li>
       @endif
     @endif
     <li><a href="{{ url('/#about') }}">About us</a></li>
