@@ -100,7 +100,7 @@
   height: auto;
 }
 @media screen and (max-width: 1500px) {
-  #announces table td button {
+  #announces table td button:nth-child(2) {
     width: auto;
     background-color: white;
     border: none;

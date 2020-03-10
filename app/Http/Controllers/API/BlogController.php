@@ -27,10 +27,6 @@ class BlogController extends Controller
 
   }
 
-  public function updateBlogPost() {
-
-  }
-
   public function deleteBlogPost() {
 
   }
@@ -43,16 +39,13 @@ class BlogController extends Controller
 
   }
 
-  public function updateCommentToPost() {
-
-  }
 
   public function deleteCommentToPost() {
 
   }
 
   public function getAllCommentToPost() {
-    
+
   }
 
 }

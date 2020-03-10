@@ -199,6 +199,9 @@ input:focus {
   border-radius: 50px;
   background-color: rgba(0, 0, 0, 0.1);
   margin: 10px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #seller #content_3 .cta {
   padding: 5% 0;

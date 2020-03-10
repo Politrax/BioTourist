@@ -46,7 +46,7 @@
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <div class="pic"></div>
+                <div class="pic" style="background-image:url('https://via.placeholder.com/150')"></div>
                 <div class="name">
                   <h3>Jakob</h3>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <div class="pic"></div>
+                <div class="pic" style="background-image:url('https://via.placeholder.com/150')"></div>
                 <div class="name">
                   <h3>Jakob</h3>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <div class="pic"></div>
+                <div class="pic" style="background-image:url('https://via.placeholder.com/150')"></div>
                 <div class="name">
                   <h3>Jakob</h3>
                 </div>
@@ -118,7 +118,7 @@
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <div class="pic"></div>
+                <div class="pic" style="background-image:url('https://via.placeholder.com/150')"></div>
                 <div class="name">
                   <h3>Jakob</h3>
                 </div>
@@ -142,7 +142,7 @@
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <div class="pic"></div>
+                <div class="pic" style="background-image:url('https://via.placeholder.com/150')"></div>
                 <div class="name">
                   <h3>Jakob</h3>
                 </div>
