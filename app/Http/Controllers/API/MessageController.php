@@ -216,7 +216,6 @@ class MessageController extends Controller
     private function resultValidator($validator){
 
         if($validator->fails()) {
-
             return response()->json([
                 'message' => 'The request is not good',
                 'error' => $validator->errors(),

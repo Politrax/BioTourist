@@ -11,10 +11,9 @@ class AnnounceController extends Controller
     private $sessionUser;
 
 
-//    public function __construct(){
-//        $this->middleware('seller');
-//        $this->middleware('SessionAuth');
-//    }
+    public function __construct(){
+//        $this->middleware('seller')->only('update','store', 'delete','selectHistorySeller', 'filterByCity','filterByCategorie');
+    }
         /**
      * Display a listing of the resource.
      *
@@ -92,7 +91,6 @@ class AnnounceController extends Controller
 
     public function filterByCategorie(Request $request, Client $client){
         $data = request()->all();
-        $this->sessionUser = $request->session()->get('user');
         $data['idUser'] = config('api.api_admin_id');
         $data['api_token'] = config('api.api_admin_token');
 
@@ -102,14 +100,11 @@ class AnnounceController extends Controller
         if ($response->status === '400'){
             return response()->json(['error' => $response->error]);
         }
-
         return response()->json($response);
-
     }
 
     public function filterByCity(Request $request, Client $client){
         $data = request()->all();
-        $this->sessionUser = $request->session()->get('user');
         $data['idUser'] = config('api.api_admin_id');
         $data['api_token'] = config('api.api_admin_token');
 

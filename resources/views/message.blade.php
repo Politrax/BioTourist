@@ -28,13 +28,24 @@
                       <td>Discussion N°{{$key}}</td>
                       <td><button type="submit" name="button" onclick="seeMessages({{ $key }})">See</button></td>
                     </tr>
-                    @foreach($messages as $message)
-                      @if(isset($message))
-                          <div class="messages{{$key}} messagesHidden" style="display: none">
-                            {{$message->message_content}}
-                          </div>
-                      @endif
-                    @endforeach
+                    <form action="{{ url('message/store') }}" method="post">
+                      @csrf
+                      <div class="messages{{$key}} messagesHidden" style="display: none">
+                        @foreach($messages as $message)
+                          @if(isset($message))
+                            <div>
+                              {{$message->message_content}}
+                            </div>
+                          @endif
+                        @endforeach
+                        <input type="hidden" name="idAnnounce" value="{{ $message->Announces_idAnnounce }}">
+                          Subject
+                        <input type="text" name="message_subject" id="message_subject"><br>
+                          Content
+                        <input type="text" name="message_content" id="message_content"><br>
+                        <button type="submit">Send</button>
+                      </div>
+                    </form>
                   @endforeach
                 @endif
                 </tbody>

@@ -14,10 +14,9 @@
                                 <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Order summary</th>
                                     <th scope="col">Quantity</th>
+                                    <th scope="col">Price unity</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Total</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>

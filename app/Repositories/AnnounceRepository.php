@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Announce;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use JasonGuru\LaravelMakeRepository\Repository\BaseRepository;
 
@@ -20,14 +21,15 @@ class AnnounceRepository extends BaseRepository
         return Announce::class;
     }
 
-    public static function filterByLngAndLatOrAndCategorie($idUser, $lng, $lat, int $idCategorie = 0){
+    public static function filterByLngAndLatOrAndCategorie($lng, $lat, int $idCategorie = 0){
         $latmax = (float)$lat +1;
         $latmin = (float)$lat -1;
         $lngmax = (float)$lng +1;
         $lngmin = (float)$lng -1;
         if ($idCategorie == 0){
             return DB::table('Announces')
-                ->select('Announces.*')
+                ->select('Announces.*', 'Users.user_name', 'Users.user_surname', 'Users.idUSer')
+                ->leftJoin('Users', 'Announces.Users_idUser', '=', 'Users.idUser')
                 ->where('announce_lat', '>=', $latmin)
                 ->where('announce_lat', '<=', $latmax)
                 ->where('announce_lng', '>=', $lngmin)
@@ -36,7 +38,8 @@ class AnnounceRepository extends BaseRepository
                 ->get();
         } else {
             $qb = DB::table('Announces')
-                ->select('Announces.*')
+                ->select('Announces.*', 'Users.user_name', 'Users.user_surname', 'Users.idUSer')
+                ->leftJoin('Users', 'Announces.Users_idUser', '=', 'Users.idUser')
                 ->join('Products', 'Announces.products_idproduct', '=', 'Products.idproduct');
                 if($idCategorie == 0){
                     $qb->where('product_categories_idproduct_category', [1,2,3,4,5,6]);

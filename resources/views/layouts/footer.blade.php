@@ -44,16 +44,9 @@
       </div>
     </div>
     <div class="line" style="margin: 10px auto;"></div>
-    <div class="link">
-      <div class="col-md-12 text-center col-sm-12">
-        <ul>
-          <li><a href="#">Announces</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
+      <div class=" link col-md-12 text-center col-sm-12">
         <p>© HEALTHY'S</p>
       </div>
-    </div>
   </div>
 </div>
 <script src="https://unpkg.com/scrollreveal"></script>
