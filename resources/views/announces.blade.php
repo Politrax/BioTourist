@@ -198,8 +198,8 @@ function addFavorite(idAnnounce, idFavori){
   });
 }
   function showAnnounce(announce) {
-    let userIdSeller = announce['Users_idUser'];
-    console.log(userIdSeller);
+    var url = '{{ url('report/create/') }}/'+announce['Users_idUser'];
+    $('#reportId').html('<a href="'+url+'"><button class="float-right" type="submit" style="background-color: red">Report</button></a>');
     $('#sellerName').html('Seller : '+announce['user_name']+' '+announce['user_surname']);
     $('#titleAnnounce').html(announce['announce_name']);
     $('#imgAnnounce').html(announce['imgAnnounce']);
@@ -208,8 +208,7 @@ function addFavorite(idAnnounce, idFavori){
     $('#announcePrice').html('Price : '+announce['announce_price']+'$');
     $('#idAnnounce').val(announce['idAnnounce']);
     $('#idAnnounce2').val(announce['idAnnounce']);
-    $('#reportId').val(userIdSeller);
-    $('#idUserSeller').val(userIdSeller);
+    $('#idUserSeller').val(announce['Users_idUser']);
     let comments = '';
     $.ajax({
       url: '/comment/'+announce['Users_idUser'],
