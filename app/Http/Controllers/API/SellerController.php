@@ -112,6 +112,7 @@ class SellerController extends Controller
 
 
         $sellerCommentsAvgNotesCountCommentsOrderByNotes = $this->OrderByNotesDescending($sellerCommentsAvgNotesCountComments);
+        $sellerCommentsAvgNotesCountCommentsOrderByNotes = array_reverse($sellerCommentsAvgNotesCountCommentsOrderByNotes);
 
         return response()->json([
             'message'   => 'The description has been update',
@@ -119,7 +120,7 @@ class SellerController extends Controller
             'arrays'    =>  $SellerComments,
             'fiveBetters' => $fiveBetters,
             'note'      => $sellerCommentsAvgNotesCountComments,
-            'sellerComments'       => $sellerCommentsAvgNotesCountCommentsOrderByNotes,
+            'sellerComments' => $sellerCommentsAvgNotesCountCommentsOrderByNotes,
         ]);
     }
 

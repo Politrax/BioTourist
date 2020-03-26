@@ -24,7 +24,9 @@ class SellerRepository extends BaseRepository
     public static function GetAllSellersWithComments(){
 
         return DB::table('Sellers')
-            ->join('Comments','Sellers.Users_idUser','Comments.Users_idUser')
+            ->join('Users','Sellers.Users_idUser','Users.idUser')
+            ->join('Announces','Sellers.Users_idUser','Announces.Users_idUser')
+            ->join('Comments','Announces.idAnnounce','Comments.Announces_idAnnounce')
             ->where('Comments.comment_note','!=',null)
             ->get();
     }

@@ -107,6 +107,24 @@ class SellerController extends Controller
         }
     }
 
+    public function selectSellersByCommentsNotes(Request $request, Client $client){
+
+        $data['idUser'] = config('api.api_admin_id');
+        $data['api_token'] = config('api.api_admin_token');
+
+        $query = $client->request('POST','http://localhost:8001/api/seller/testSelect', [
+            'form_params' => $data
+        ]);
+        $response = json_decode($query->getBody()->getContents());
+
+        dd($response);
+
+        if($response->status === '400')
+        {
+            return redirect('login');
+        }
+    }
+
     public function testSelectSellersByCommentsNotes(Request $request, Client $client){
 
         $data['idUser'] = config('api.api_admin_id');
@@ -123,7 +141,6 @@ class SellerController extends Controller
         {
             return redirect('login');
         }
-
     }
 
 

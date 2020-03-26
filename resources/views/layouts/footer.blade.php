@@ -36,8 +36,8 @@
       <div class="row" style="margin:0;">
         <div class="col-md-4 offset-md-4 text-center col-sm-12">
           <ul>
-            <li><i class="fab fa-twitter"></i></li>
-            <li><i class="fab fa-instagram"></i></li>
+            <a href="https://twitter.com/Biotourist1"><li><i class="fab fa-twitter"></i></li></a>
+            <a href="https://www.facebook.com/bio.tourist.35"><li><i class="fab fa-instagram"></i></li></a>
             <li><i class="fab fa-facebook"></i></li>
           </ul>
         </div>
