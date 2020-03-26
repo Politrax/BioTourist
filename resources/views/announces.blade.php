@@ -127,7 +127,7 @@ function filterByCategorieProduct(categorie){
           remplirDivAnnonce(retour.announces);
         },
         error: function (resultat) {
-          console.log('marche pas frero')
+          console.log('Erreur')
         }});
       }
     });
@@ -198,12 +198,16 @@ function addFavorite(idAnnounce, idFavori){
   });
 }
   function showAnnounce(announce) {
+    var url = '{{ url('report/create/') }}/'+announce['Users_idUser'];
+    $('#reportId').html('<a href="'+url+'"><button class="float-right" type="submit" style="background-color: red">Report</button></a>');
+    $('#sellerName').html('Seller : '+announce['user_name']+' '+announce['user_surname']);
     $('#titleAnnounce').html(announce['announce_name']);
     $('#imgAnnounce').html(announce['imgAnnounce']);
-    $('#announceComment').html(announce['announce_comment']);
-    $('#announceAdresse').html(announce['announce_adresse']);
-    $('#announcePrice').html(announce['announce_price']+'$');
+    $('#announceComment').html('Description : '+announce['announce_comment']);
+    $('#announceAdresse').html('Address : '+announce['announce_adresse']);
+    $('#announcePrice').html('Price : '+announce['announce_price']+'$');
     $('#idAnnounce').val(announce['idAnnounce']);
+    $('#idAnnounce2').val(announce['idAnnounce']);
     $('#idUserSeller').val(announce['Users_idUser']);
     let comments = '';
     $.ajax({

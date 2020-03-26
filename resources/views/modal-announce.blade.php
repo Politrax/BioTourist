@@ -2,10 +2,11 @@
     <div class="modal-dialog modal-lg" style="width: 90%">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title modal-title" id="titleAnnounce"></h4>
+                <h3 class="title modal-title" id="titleAnnounce"></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
+                <h6 id="sellerName"></h6>
                 <form action="{{ url('carte') }}" method="post">
                     @csrf
                     <input type="hidden" name="idAnnounce" id="idAnnounce">
@@ -28,6 +29,18 @@
                         </div>
                     </div>
                 </form>
+                <span id="reportId"></span>
+                @if( (isset(session('active_status')->status_user_label))  && session('active_status')->status_user_label == 'Tourist') || session('active_status')->status_user_label == 'Controller' || session('active_status')->status_user_label == 'Seller')
+                    <form method="POST" action="{{ url('message/store') }}">
+                        @csrf
+                        <input type="hidden" name="idAnnounce" id="idAnnounce2">
+                            Subject
+                        <input type="text" name="message_subject" id="message_subject"><br>
+                            Content
+                        <input type="text" name="message_content" id="message_content"><br>
+
+                    </form>
+                @endif
             </div>
 
             <div class="modal-footer">

@@ -36,24 +36,17 @@
       <div class="row" style="margin:0;">
         <div class="col-md-4 offset-md-4 text-center col-sm-12">
           <ul>
-            <li><i class="fab fa-twitter"></i></li>
-            <li><i class="fab fa-instagram"></i></li>
+            <a href="https://twitter.com/Biotourist1"><li><i class="fab fa-twitter"></i></li></a>
+            <a href="https://www.facebook.com/bio.tourist.35"><li><i class="fab fa-instagram"></i></li></a>
             <li><i class="fab fa-facebook"></i></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="line" style="margin: 10px auto;"></div>
-    <div class="link">
-      <div class="col-md-12 text-center col-sm-12">
-        <ul>
-          <li><a href="#">Announces</a></li>
-          <li><a href="#">Products</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
+      <div class=" link col-md-12 text-center col-sm-12">
         <p>© HEALTHY'S</p>
       </div>
-    </div>
   </div>
 </div>
 <script src="https://unpkg.com/scrollreveal"></script>

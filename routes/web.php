@@ -119,7 +119,7 @@ Route::post('favori/isFavoris','FavoriController@isFavoris');
 
 //Messages
 
-Route::get('message/store','MessageController@store');
+Route::post('message/store','MessageController@store');
 
 Route::get('message/show/seller','MessageController@showMessagesOfASeller');
 
@@ -143,7 +143,7 @@ Route::get('qantmore','CartController@qantmore')->name('qantmore');
 Route::get('qantless','CartController@qantless')->name('qantless');
 // Profil
 Route::get('profil', 'ProfilController@profil');
-Route::get('message', 'ProfilController@message');
+//Route::get('message', 'ProfilController@message');
 Route::get('favorite', 'ProfilController@favorite');
 // FAQ
 Route::get('blog', 'BlogController@index');
@@ -173,7 +173,7 @@ Route::get('seller/testSelect','SellerController@testSelectSellersByCommentsNote
 
 Route::get('register','UserController@profil');
 
-Route::get('messages','MessageController@index');
+//Route::get('messages','MessageController@index');
 
 Route::get('aide',function(){
     return view('');

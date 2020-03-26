@@ -26,15 +26,16 @@
         <div class="line"></div>
         <h2>What is Healthy's ?</h2>
         <div class="col-md-6 offset-md-3 text-center">
-          <p>No matter where you are, in travel or home, you will be able to access to the best selection of organic producers. You will be able to buy your products from the plateform, also from our application available <a href="#">here</a>.</p>
+          <p>No matter where you are, in travel or home, you will be able to access to the best selection of organic producers. You will be able to buy your products from the plateform, also from our application available {{--<a href="#">here</a>--}}.</p>
           <p>The first step is to reference your adress to have access to our listed producers in the area. Then you will be able to select your list of product in different type of unit.</p>
           <p>Eating healthy has never been so simple !</p>
-          <button type="button" name="button" onclick="window.location.href='{{ url('about') }}'">Read more</button>
+          {{--<button type="button" name="button" onclick="window.location.href='{{ url('about') }}'">Read more</button>--}}
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div id="seller">
   <div class="row" style="margin:0;">
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -46,133 +47,62 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="row" style="margin:0;">
+
+            @for($i=0;$i<5;$i++)
+
+            @if($i%2==0)
             <div class="column">
               <div class="card top" data-aos="fade-down">
                 <div class="review">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  @for($e=0;$e<$sellerByNotes[$i]->moyenne;$e++)
+                    <i class="fas fa-star"></i>
+                  @endfor
                 </div>
                 <div class="pic"></div>
                 <div class="name">
-                  <h3>Jakob</h3>
+                  <h3>{{ $sellerByNotes[$i]->{0}->user_name }}  {{ $sellerByNotes[$i]->{0}->user_surname }}</h3>
                 </div>
                 <div class="desc">
-                  <p>"Farmer from father to son"</p>
+                  <p>{{$sellerByNotes[$i]->{0}->seller_description}}</p>
                 </div>
                 <div class="pos">
                   <i class="fas fa-map-marker-alt"></i>
-                  <p>Wyoming</p>
+                  <p>{{$sellerByNotes[$i]->{0}->seller_city}}</p>
                 </div>
                 <div class="comment">
-                  <p>Comments : (34)</p>
-                </div>
-                <div class="view">
-                  <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
+                  <p>Comments : ({{$sellerByNotes[$i]->nombreNote}})</p>
                 </div>
               </div>
             </div>
-            <div class="column">
-              <div class="card bottom" data-aos="fade-up">
-                <div class="review">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="pic"></div>
-                <div class="name">
-                  <h3>Jakob</h3>
-                </div>
-                <div class="desc">
-                  <p>"Farmer from father to son"</p>
-                </div>
-                <div class="pos">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <p>Wyoming</p>
-                </div>
-                <div class="comment">
-                  <p>Comments : (34)</p>
-                </div>
-                <div class="view">
-                  <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="card top" data-aos="fade-down">
-                <div class="review">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="pic"></div>
-                <div class="name">
-                  <h3>Jakob</h3>
-                </div>
-                <div class="desc">
-                  <p>"Farmer from father to son"</p>
-                </div>
-                <div class="pos">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <p>Wyoming</p>
-                </div>
-                <div class="comment">
-                  <p>Comments : (34)</p>
-                </div>
-                <div class="view">
-                  <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
+              @else
+
+              <div class="column">
+                <div class="card bottom" data-aos="fade-up">
+                  <div class="review">
+                    @for($e=0;$e<$sellerByNotes[$i]->moyenne;$e++)
+                      <i class="fas fa-star"></i>
+                    @endfor
+                  </div>
+                  <div class="pic"></div>
+                  <div class="name">
+                    <h3>{{ $sellerByNotes[$i]->{0}->user_name }}  {{ $sellerByNotes[$i]->{0}->user_surname }}</h3>
+                  </div>
+                  <div class="desc">
+                    <p>{{$sellerByNotes[$i]->{0}->seller_description}}</p>
+                  </div>
+                  <div class="pos">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>{{$sellerByNotes[$i]->{0}->seller_city}}</p>
+                  </div>
+                  <div class="comment">
+                    <p>Comments : ({{$sellerByNotes[$i]->nombreNote}})</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="column">
-              <div class="card bottom" data-aos="fade-up">
-                <div class="review">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="pic"></div>
-                <div class="name">
-                  <h3>Jakob</h3>
-                </div>
-                <div class="desc">
-                  <p>"Farmer from father to son"</p>
-                </div>
-                <div class="pos">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <p>Wyoming</p>
-                </div>
-                <div class="comment">
-                  <p>Comments : (34)</p>
-                </div>
-                <div class="view">
-                  <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="card top" data-aos="fade-down">
-                <div class="review">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <div class="pic"></div>
-                <div class="name">
-                  <h3>Jakob</h3>
-                </div>
-                <div class="desc">
-                  <p>"Farmer from father to son"</p>
-                </div>
-                <div class="pos">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <p>Wyoming</p>
-                </div>
-                <div class="comment">
-                  <p>Comments : (34)</p>
-                </div>
-                <div class="view">
-                  <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cta">
-          <div class="row" style="margin:0;">
-            <div class="col-xs-12 col-sm-12 col-md-2 offset-md-5 text-center">
-              <button type="button" name="button" onclick="">View all</button>
-            </div>
+              @endif
+
+            @endfor
+
           </div>
         </div>
       </div>
@@ -198,67 +128,63 @@
                       <p>2020-02-02 23:00:00</p>
                     </div>
                     <div class="title">
-                      <h3>News 2020</h3>
+                      <h3>9 super fun and interisting pineapple facts</h3>
                     </div>
                     <div class="desc">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p>Did you know pineapples can regenerate? Find out more fun pineapple facts by reading below!</p>
                     </div>
                     <div class="view">
-                      <button class="btn_article" type="button" name="button" onclick="">Read More</button>
+                      <button class="btn_article" type="button" name="button" onclick="window.location.href='https://thatsitfruit.com/blog/9-interesting-facts-about-pineapples/'">View Article</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-              <div class="column">
-                <div class="article" data-aos="fade-down">
-                  <div class="pic" style="background-image:url(../img/article/article_1.jpg)"></div>
-                  <div class="content">
-                    <div class="meta">
-                      <p>2020-02-02 23:00:00</p>
-                    </div>
-                    <div class="title">
-                      <h3>News 2020</h3>
-                    </div>
-                    <div class="desc">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                    <div class="view">
-                      <button class="btn_article" type="button" name="button" onclick="">Read More</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div class="col-md-4">
               <div class="column">
                 <div class="article" data-aos="fade-up">
                   <div class="pic" style="background-image:url(../img/article/article_2.jpg)"></div>
                   <div class="content">
                     <div class="meta">
-                      <p>2020-02-02 23:00:00</p>
+                      <p>2019-06</p>
                     </div>
                     <div class="title">
-                      <h3>News 2020</h3>
+                      <h3>Organic Foods: What You Need to Know</h3>
                     </div>
                     <div class="desc">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p>Is organic food really healthier? Is it worth the expense? Find out what the labels mean and which foods give you the most bang for your buck. The term “organic” refers to the way agricultural products are grown and processed. While the regulations vary from country to country, in the U.S., organic crops must be grown without the use of synthetic ...</p>
                     </div>
                     <div class="view">
-                      <button class="btn_article" type="button" name="button" onclick="">Read More</button>
+                      <button class="btn_article" type="button" name="button" onclick="window.location.href='https://www.helpguide.org/articles/healthy-eating/organic-foods.htm'">View Article</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="cta">
-          <div class="row" style="margin:0;">
-            <div class="col-xs-12 col-sm-12 col-md-2 offset-md-5 text-center">
-              <button type="button" name="button" onclick="">View all</button>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="column">
+                <div class="article" data-aos="fade-down">
+                  <div class="pic" style="background-image:url(../img/article/article_1.jpg)"></div>
+                  <div class="content">
+                    <div class="meta">
+                      <p>2019-11</p>
+                    </div>
+                    <div class="title">
+                      <h3>14 garden design ideas to make the best of your outdoor space</h3>
+                    </div>
+                    <div class="desc">
+                      <p>These garden design ideas are the key to a scheme you'll love for years to come.</p>
+                    </div>
+                    <div class="view">
+                      <button class="btn_article" type="button" name="button" onclick="window.location.href='https://www.housebeautiful.com/uk/garden/designs/a495/garden-design-ideas/'">View Article</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
