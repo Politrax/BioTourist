@@ -9,6 +9,8 @@
           {{ session('successReport') }}
         </div>
       @endif
+        {{$sellerByNotes[0]->user->idUser}}
+        {{$sellerByNotes[0]->{0}->idSeller}}
       <div id="content_1" class="animated slideInUp">
         <h3>From now</h3>
         <h2>Eating healthy has never been so simple</h2>
@@ -35,6 +37,7 @@
     </div>
   </div>
 </div>
+
 <div id="seller">
   <div class="row" style="margin:0;">
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -46,7 +49,8 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="row" style="margin:0;">
-            <div class="column">
+
+            {{--<div class="column">
               <div class="card top" data-aos="fade-down">
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -69,8 +73,8 @@
                   <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
                 </div>
               </div>
-            </div>
-            <div class="column">
+            </div>--}}
+            {{--<div class="column">
               <div class="card bottom" data-aos="fade-up">
                 <div class="review">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -94,6 +98,7 @@
                 </div>
               </div>
             </div>
+
             <div class="column">
               <div class="card top" data-aos="fade-down">
                 <div class="review">
@@ -118,6 +123,7 @@
                 </div>
               </div>
             </div>
+
             <div class="column">
               <div class="card bottom" data-aos="fade-up">
                 <div class="review">
@@ -141,38 +147,63 @@
                   <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
                 </div>
               </div>
-            </div>
+            </div>--}}
+
+            @for($i=0;$i<5;$i++)
+
+            @if($i%2==0)
             <div class="column">
               <div class="card top" data-aos="fade-down">
                 <div class="review">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  @for($e=0;$e<$sellerByNotes[$i]->moyenne;$e++)
+                    <i class="fas fa-star"></i>
+                  @endfor
                 </div>
                 <div class="pic"></div>
                 <div class="name">
-                  <h3>Jakob</h3>
+                  <h3>{{ $sellerByNotes[$i]->{0}->user_name }}  {{ $sellerByNotes[$i]->{0}->user_surname }}</h3>
                 </div>
                 <div class="desc">
-                  <p>"Farmer from father to son"</p>
+                  <p>{{$sellerByNotes[$i]->{0}->seller_description}}</p>
                 </div>
                 <div class="pos">
                   <i class="fas fa-map-marker-alt"></i>
-                  <p>Wyoming</p>
+                  <p>{{$sellerByNotes[$i]->{0}->seller_city}}</p>
                 </div>
                 <div class="comment">
-                  <p>Comments : (34)</p>
-                </div>
-                <div class="view">
-                  <button class="btn_top_vendor" type="button" name="button" onclick="">View Profil</button>
+                  <p>Comments : ({{$sellerByNotes[$i]->nombreNote}})</p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="cta">
-          <div class="row" style="margin:0;">
-            <div class="col-xs-12 col-sm-12 col-md-2 offset-md-5 text-center">
-              <button type="button" name="button" onclick="">View all</button>
-            </div>
+              @else
+
+              <div class="column">
+                <div class="card bottom" data-aos="fade-up">
+                  <div class="review">
+                    @for($e=0;$e<$sellerByNotes[$i]->moyenne;$e++)
+                      <i class="fas fa-star"></i>
+                    @endfor
+                  </div>
+                  <div class="pic"></div>
+                  <div class="name">
+                    <h3>{{ $sellerByNotes[$i]->{0}->user_name }}  {{ $sellerByNotes[$i]->{0}->user_surname }}</h3>
+                  </div>
+                  <div class="desc">
+                    <p>{{$sellerByNotes[$i]->{0}->seller_description}}</p>
+                  </div>
+                  <div class="pos">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>{{$sellerByNotes[$i]->{0}->seller_city}}</p>
+                  </div>
+                  <div class="comment">
+                    <p>Comments : ({{$sellerByNotes[$i]->nombreNote}})</p>
+                  </div>
+                </div>
+              </div>
+              @endif
+
+            @endfor
+
           </div>
         </div>
       </div>
