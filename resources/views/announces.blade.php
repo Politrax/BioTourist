@@ -133,7 +133,6 @@ function filterByCategorieProduct(categorie){
     });
   }
   function remplirDivAnnonce(announces){
-  console.log(announces);
     lgMarkers.clearLayers();
     $('#sellerAnnounces').empty();
     var tbody = '';
@@ -199,7 +198,8 @@ function addFavorite(idAnnounce, idFavori){
   });
 }
   function showAnnounce(announce) {
-  console.log(announce);
+    let userIdSeller = announce['Users_idUser'];
+    console.log(userIdSeller);
     $('#sellerName').html('Seller : '+announce['user_name']+' '+announce['user_surname']);
     $('#titleAnnounce').html(announce['announce_name']);
     $('#imgAnnounce').html(announce['imgAnnounce']);
@@ -208,7 +208,8 @@ function addFavorite(idAnnounce, idFavori){
     $('#announcePrice').html('Price : '+announce['announce_price']+'$');
     $('#idAnnounce').val(announce['idAnnounce']);
     $('#idAnnounce2').val(announce['idAnnounce']);
-    $('#idUserSeller').val(announce['Users_idUser']);
+    $('#reportId').val(userIdSeller);
+    $('#idUserSeller').val(userIdSeller);
     let comments = '';
     $.ajax({
       url: '/comment/'+announce['Users_idUser'],

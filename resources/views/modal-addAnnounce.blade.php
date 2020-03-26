@@ -70,7 +70,7 @@ function addAnnounce() {
     data: data,
     dataType: "json",
     success: function (result) {
-      document.location.href="https://biotourist.space/announce/historySeller"
+      document.location.href="{{ url('announce/historySeller') }}"
     }
   });
 }
