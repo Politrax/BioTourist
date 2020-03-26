@@ -139,7 +139,7 @@ class ContactController extends Controller
         $validator = Validator::make($this->request->all(), [
             'contact_subject'           => 'required|string|max:5',
             'contact_content'           => 'required|string|max:500',
-            'contact_email'             => 'email|string|max:255',
+            'contact_email'             => 'required|email|string|max:255',
         ]);
 
         return $this->resultValidator($validator);
@@ -171,7 +171,7 @@ class ContactController extends Controller
         }else{
 
             $this->validData = $usefullController->keepKeysThatWeNeed($this->request->all(),
-                ['contact_subject','contact_content']
+                ['contact_subject','contact_content','contact_email']
             );
         }
 
