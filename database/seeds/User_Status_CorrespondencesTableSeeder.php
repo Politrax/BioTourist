@@ -42,6 +42,26 @@ class User_Status_CorrespondencesTableSeeder extends Seeder
                 'Status_User_idStatus_User' => 4,
                 'default_status' => true,
             ),
+            array(
+                'Users_idUser' => 6,
+                'Status_User_idStatus_User' => 3,
+                'default_status' => true,
+            ),
+            array(
+                'Users_idUser' => 7,
+                'Status_User_idStatus_User' => 3,
+                'default_status' => true,
+            ),
+            array(
+                'Users_idUser' => 8,
+                'Status_User_idStatus_User' => 3,
+                'default_status' => true,
+            ),
+            array(
+                'Users_idUser' => 9,
+                'Status_User_idStatus_User' => 3,
+                'default_status' => true,
+            ),
         ));
     }
 }

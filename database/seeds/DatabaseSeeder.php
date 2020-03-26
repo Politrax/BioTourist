@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             ReportCategoriesTableSeeder::class,
             ReportsTableSeeder::class,
             User_Status_CorrespondencesTableSeeder::class,
-            ChecksTableSeeder::class
+            ChecksTableSeeder::class,
+            ContactsTableSeeder::class
         ]);
     }
 }

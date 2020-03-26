@@ -14,7 +14,7 @@ class AddForeignKeysToRequestControllerTable extends Migration {
 	{
 		Schema::table('RequestController', function(Blueprint $table)
 		{
-			$table->foreign('Users_idUser', 'fk_RequestController_Users1_idx')->references('idUser')->on('Users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('Users_idUser', 'fk_RequestController_Users1')->references('idUser')->on('Users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 
         });
 	}
@@ -27,9 +27,9 @@ class AddForeignKeysToRequestControllerTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('Reports', function(Blueprint $table)
+		Schema::table('RequestController', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_RequestController_Users1_idx');
+			$table->dropForeign('fk_RequestController_Users1');
         });
 	}
 
