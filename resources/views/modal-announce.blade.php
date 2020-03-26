@@ -2,10 +2,11 @@
     <div class="modal-dialog modal-lg" style="width: 90%">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title modal-title" id="titleAnnounce"></h4>
+                <h3 class="title modal-title" id="titleAnnounce"></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
+                <h6 id="sellerName"></h6>
                 <form action="{{ url('carte') }}" method="post">
                     @csrf
                     <input type="hidden" name="idAnnounce" id="idAnnounce">
