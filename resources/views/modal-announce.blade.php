@@ -29,6 +29,17 @@
                         </div>
                     </div>
                 </form>
+                @if((session('active_status')->status_user_label == 'Tourist' || session('active_status')->status_user_label == 'Controller') || session('active_status')->status_user_label == 'Seller')
+                    <form method="POST" action="{{ url('message/store') }}">
+                        @csrf
+                        <input type="hidden" name="idAnnounce" id="idAnnounce2">
+                            Subject
+                        <input type="text" name="message_subject" id="message_subject"><br>
+                            Content
+                        <input type="text" name="message_content" id="message_content"><br>
+                        <button type="submit">Send</button>
+                    </form>
+                @endif
             </div>
 
             <div class="modal-footer">

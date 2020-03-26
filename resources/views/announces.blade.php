@@ -207,6 +207,7 @@ function addFavorite(idAnnounce, idFavori){
     $('#announceAdresse').html('Address : '+announce['announce_adresse']);
     $('#announcePrice').html('Price : '+announce['announce_price']+'$');
     $('#idAnnounce').val(announce['idAnnounce']);
+    $('#idAnnounce2').val(announce['idAnnounce']);
     $('#idUserSeller').val(announce['Users_idUser']);
     let comments = '';
     $.ajax({

@@ -60,7 +60,7 @@ class MessageController extends Controller
 
         $this->message = Message::create($this->validData);
 
-        $this->sendCreatedEmail($mail);
+//        $this->sendCreatedEmail($mail);
 
         return response()->json([
             'message'   => 'Your Message has been register',
@@ -216,7 +216,6 @@ class MessageController extends Controller
     private function resultValidator($validator){
 
         if($validator->fails()) {
-
             return response()->json([
                 'message' => 'The request is not good',
                 'error' => $validator->errors(),

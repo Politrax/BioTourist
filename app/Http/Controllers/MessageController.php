@@ -36,19 +36,18 @@ class MessageController extends Controller
     public function store(Request $request, Client $client)
     {
         $this->sessionUser = $request->session()->get('user');
-
         $data = request()->all();
-
-        /*$data['message_subject'] = 'this is a message about your shitty announce';*/
-        $data['message_content'] = 'Your announce is like a big caca';
-        $data['idAnnounce'] = 1;
         $data['idUser']     = $this->sessionUser->idUser;
         $data['api_token']  = $this->sessionUser->api_token;
         $query = $client->request('POST','http://localhost:8001/api/message/store',
             ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
 
-        return view('message',["response" => $response]);
+        if ($request->session()->get('active_status')->status_user_label == 'Seller'){
+            return redirect('message/show/seller');
+        }
+        return redirect('message/show/User');
+
     }
 
     public function showMessagesOfATouristController(Request $request, Client $client)
