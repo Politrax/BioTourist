@@ -69,9 +69,9 @@
                 <h3>Identifiers</h3>
                 <div class="form-group">
                 <label for="">I'm a</label>
-                <input type="radio" name="status_user" value="Tourist" checked="checked" onclick="click(0)" >
+                <input type="radio" name="status_user" id="button_tourist" value="Tourist" checked="checked"  >
                 <label for="tourist">Tourist</label>
-                <input type="radio" name="status_user" value="Seller" onclick="click(1)" >
+                <input type="radio" name="status_user" id="button_seller" value="Seller" >
                 <label for="seller">Seller</label>
                 </div>
                 <div class="form-group">
@@ -81,6 +81,7 @@
                 </div>
               </div>
             </div>
+
             <div class="card">
               <div class="register">
                 <h3>Personnal informations</h3>
@@ -89,18 +90,39 @@
                 <input type="text" name="user_surname" value="" placeholder="Lastname *" required>
                 </div>
                 <div class="form-group">
-                <input type="text" name="user_postal_code" value="" placeholder="Postal code">
-                <input type="text" name="user_phone" value="" placeholder="Phone number">
+                  <input type="text" name="user_city" value="" placeholder="City">
+                  <input type="text" name="user_adress" value="" placeholder="adress">
+                  <input type="text" name="user_postal_code" value="" placeholder="Postal code">
+                  <input type="text" name="user_phone" value="" placeholder="Phone number">
                 </div>
               </div>
-              <div class="form-group text-center">
+              <div class="form-group text-center" id="button_register_normal">
                 <input type="submit" name="" value="Register">
               </div>
             </div>
+
+            <div class="card" id="seller_information" style="display: none">
+              <div class="register">
+                <h3>Seller Informations</h3>
+                <div class='form-group'>
+                  <textarea rows='5'  cols='33' name='seller_description' placeholder='description of the seller*' required></textarea><br>
+                </div>
+                <div class='form-group'>
+                  <input type='text'  name='seller_adress' placeholder='the sales address*' required>
+                  <input type='text'  name='seller_city' placeholder='the sales city*' required>
+                  <input type='number'  name='seller_postal_code' placeholder='the sales postal code*' required>
+                </div>
+              </div>
+                <div class="form-group text-center">
+                  <input type="submit" name="" value="Register">
+                </div>
+            </div>
+
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript" src="{{ url('/js/Register/sellerInformation.js') }}"></script>
 @include('layouts.footer')

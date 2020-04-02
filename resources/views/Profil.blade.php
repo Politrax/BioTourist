@@ -173,7 +173,7 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="{{ url('/js/addStatus.js') }}"></script>
+<script type="text/javascript" src="{{ url('/js/Status/addStatus.js') }}"></script>
 <script type="text/javascript">
 const x = document.getElementById("edit");
 const y = document.getElementById("info");

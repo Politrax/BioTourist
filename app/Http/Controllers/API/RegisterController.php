@@ -76,6 +76,8 @@ class RegisterController extends Controller
             'user_surname' => ['required', 'string', 'max:45'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:Users'],
             'user_postal_code' => ['integer'],
+            'user_city' => ['string','max:255'],
+            'user_adress' => ['string','max:255'],
             'user_phone' => ['unique:Users','regex:/^(\d\d(\s)?){4}(\d\d)$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'user_img' => ['string'],
@@ -114,7 +116,7 @@ class RegisterController extends Controller
     private function setValidDateDependingOnTheUserStatus($usefullController){
 
         $validData = $usefullController->keepKeysThatWeNeed($this->request->all(),
-            ['user_name','user_surname','email','user_postal_code','user_phone','password','user_img']
+            ['user_name','user_surname','email','user_postal_code','user_adress','user_city','user_phone','password','user_img']
             );
 
         if($this->request->input('status_user') == 'Seller'){
