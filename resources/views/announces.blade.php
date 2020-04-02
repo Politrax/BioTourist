@@ -199,7 +199,7 @@ function addFavorite(idAnnounce, idFavori){
 }
   function showAnnounce(announce) {
     let userIdSeller = announce['Users_idUser'];
-    console.log(userIdSeller);
+    //console.log(userIdSeller);
     $('#sellerName').html('Seller : '+announce['user_name']+' '+announce['user_surname']);
     $('#titleAnnounce').html(announce['announce_name']);
     $('#imgAnnounce').html(announce['imgAnnounce']);

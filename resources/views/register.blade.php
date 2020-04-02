@@ -81,6 +81,7 @@
                 </div>
               </div>
             </div>
+
             <div class="card">
               <div class="register">
                 <h3>Personnal informations</h3>
@@ -89,14 +90,36 @@
                 <input type="text" name="user_surname" value="" placeholder="Lastname *" required>
                 </div>
                 <div class="form-group">
-                <input type="text" name="user_postal_code" value="" placeholder="Postal code">
-                <input type="text" name="user_phone" value="" placeholder="Phone number">
+                  <input type="text" name="user_city" value="" placeholder="City">
+                  <input type="text" name="user_adress" value="" placeholder="adress">
+                  <input type="text" name="user_postal_code" value="" placeholder="Postal code">
+                  <input type="text" name="user_phone" value="" placeholder="Phone number">
                 </div>
               </div>
               <div class="form-group text-center">
                 <input type="submit" name="" value="Register">
               </div>
             </div>
+
+            <div class="card">
+              <div class="register">
+                <h3>Seller Information</h3>
+                <div class="form-group">
+                  <input type="text" name="seller_description" value="" placeholder="Firstname *" required>
+                  <input type="text" name="user_surname" value="" placeholder="Lastname *" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="user_city" value="" placeholder="City">
+                  <input type="text" name="user_adress" value="" placeholder="adress">
+                  <input type="text" name="user_postal_code" value="" placeholder="Postal code">
+                  <input type="text" name="user_phone" value="" placeholder="Phone number">
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <input type="submit" name="" value="Register">
+              </div>
+            </div>
+
           </form>
         </div>
       </div>

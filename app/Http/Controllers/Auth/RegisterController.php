@@ -86,6 +86,7 @@ class RegisterController extends Controller
         $data['user_surname'] = 'surname';
         $data['user_adress'] = '12 rue bangbang';
         $data['user_postal_code'] = '95234';
+        $data['user_city'] = 'Paris';
         $data['user_phone'] = '0646527876';
         $data['email'] = 'pomme2@pomme2.fr';
         $data['password'] = 'azertyuiop';
