@@ -134,6 +134,8 @@ Route::get('report/create/{idUserReported}','ReportController@create');
 
 Route::post('report/show/user','ReportController@showAllMyReports');
 
+Route::get('report/destroy/{idReport}','ReportController@destroy');
+
 // Cart
 Route::get('cart', 'CartController@index')->name('cart');
 Route::get('cart/remove','CartController@remove');
@@ -147,7 +149,7 @@ Route::get('profil', 'ProfilController@profil');
 Route::get('favorite', 'ProfilController@favorite');
 // FAQ
 Route::get('blog', 'BlogController@index');
-Route::get('report/show/admin','ReportController@showAllReportsForAdmin');
+Route::get('admin/report/all','ReportController@showAllReportsForAdmin');
 
 //User_Status_Correspondence
 
@@ -215,7 +217,7 @@ Route::get('announce/historySeller','AnnounceController@selectHistorySeller');
 
 //Admin
 
-Route::get('admin','AdminController@index');
+Route::get('admin','AdminController@index')->name('admin');
 
 Route::get('admin/checks','AdminController@showChecks');
 

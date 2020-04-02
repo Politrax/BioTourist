@@ -13,7 +13,7 @@ class ControllerController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('controller');
+        $this->middleware('controller');
     }
 
     /**

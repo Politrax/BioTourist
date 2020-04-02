@@ -23,23 +23,46 @@ class AdminController extends Controller
      */
     public function index(Request $request, Client $client)
     {
+        $errorContact = $request->input('errorContact');
+        $successContact = $request->input('successContact');
+        $errorReport = $request->input('errorReport');
+        $successReport = $request->input('successReport');
+        $contacts = null;
+        $reports = null;
 
         $this->sessionUser = $request->session()->get('user');
 
         $data['idUser'] = $this->sessionUser->idUser;
         $data['api_token'] = $this->sessionUser->api_token;
 
-        $query = $client->request('POST','http://localhost:8001/api/contact/admin/all',
+        $queryContact= $client->request('POST','http://localhost:8001/api/contact/admin/all',
             ['form_params' => $data]);
 
-        $response = json_decode($query->getBody()->getContents());
+        $responseContact = json_decode($queryContact->getBody()->getContents());
 
-        if($response->status == '400'){
+        $queryReport = $client->request('POST','http://localhost:8001/api/admin/report/all',
+            ['form_params' => $data]);
 
-            return view('admin.admin')->with('errorContact','You have no contacts');
+        $responseReport = json_decode($queryReport->getBody()->getContents());
+
+        if($responseContact->status == '200'){
+
+            $contacts = $responseContact->contacts;
         }
 
-        return view('admin.admin')->with('contacts',$response->contacts);
+        if($responseReport->status == '200'){
+
+            $reports = $responseReport->reportByDateDesc;
+        }
+
+        return view('admin.admin')->with([
+            'errorContact' => $errorContact,
+            'successContact' => $successContact,
+            'errorReport' => $errorReport,
+            'successReport' => $successReport,
+            'contacts' => $contacts,
+            'reports' => $reports
+        ]);
     }
 
     public function showChecks(Request $request, Client $client)

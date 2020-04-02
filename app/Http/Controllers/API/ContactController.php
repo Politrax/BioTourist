@@ -80,7 +80,7 @@ class ContactController extends Controller
         return response()->json([
             'message'   => 'The contact has been deleted',
             'status'    => '200',
-            'idUser'    => $this->contact
+            'contact'    => $this->contact
         ]);
     }
 
@@ -213,14 +213,15 @@ class ContactController extends Controller
     }
 
     private function verifyIfContactExist(){
+        if($this->request->has('idContactDelete')){
+            $this->contact = Contact::find($this->request->input('idContactDelete'));
+            if($this->contact){
 
-        $this->contact = Contact::find($this->request->input('idContactDelete'));
-        if(!$this->contact){
-
-            return false;
+                return true;
+            }
         }
 
-        return true;
+        return false;
     }
 
     private function verifyIfUserExist(){

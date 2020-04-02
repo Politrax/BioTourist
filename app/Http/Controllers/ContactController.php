@@ -172,18 +172,14 @@ class ContactController extends Controller
         $query = $client->request('POST','http://localhost:8001/api/contact/destroy',
             ['form_params' => $data]);
 
-        $response1 = json_decode($query->getBody()->getContents());
+        $response = json_decode($query->getBody()->getContents());
 
-        $query = $client->request('POST','http://localhost:8001/api/contact/admin/all',
-            ['form_params' => $data]);
 
-        $responseContact = json_decode($query->getBody()->getContents());
+        if($response->status == '400'){
 
-        if($response1->status == '400'){
-
-            return view('admin.admin',['error' => 'the Contact id doesn\'t exist'])->with('contacts',$responseContact->contacts);
+            return redirect()->route('admin',['errorContact' => 'the Contact id doesn\'t exist']);
         }
 
-        return view('admin.admin')->with('contacts',$responseContact->contacts);
+        return redirect()->route('admin',['successContact' => 'the Contact has been destroy successfully']);
     }
 }
