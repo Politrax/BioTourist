@@ -2,52 +2,52 @@
 @include('layouts.navbarDesktop')
 @include('layouts.navbarMobile')
 
-<div id="profil">
-    <div class="row" style="margin:0;">
-        <div class="col-md-12" style="padding:0;">
-            <div class="profil_banner">
-                <div class="row" style="margin:0;">
-                    <div class="col-md-12 text-center">
-                        <h2>Admin Portal</h2>
-                        <div class="line"></div>
+<div id="connection">
+    <div class="col-md-12 text-center">
+        <div class="row" style="margin:0;">
+            <div class="col-xs-12 col-sm-12">
+
+                <div id="register">
+                    <div class="card">
+                        <div class="register">
+                            <h3>Create a discount Code For multiple User</h3>
+                            <form class="" action="/discountCode" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="hidden" name="OneOrMultipleUser" value="Multiple">
+                                    <input type="integer" name="discount_code_amount" value="" placeholder="reduction amount*" >
+                                    <input type="integer" name="expiration_time" value="" placeholder="expiration time*">
+                                    <input type="integer" name="minimum_amount" placeholder="minimum amount*">
+                                    <input type="text" name="periode_minimum_amount" placeholder="range minimum amount calcul*">
+                                </div>
+                                <div class="form-group text-center" id="button_register_normal">
+                                    <input type="submit" name="" value="Register">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="profil_container text-center">
-                <div class="row" style="margin:0;">
-                    <div class="col-md-12 text-center">
-                        <h3>Create a discount Code For multiple User</h3>
-                        <form class="" action="/discountCode" method="post">
-                            @csrf
-                            <input type="integer" name="discount_code_amount" value="" placeholder="reduction amount %" >
-                            <input type="integer" name="expiration_time" value="" placeholder="expiration time">
-                            <select class="form-control" name="OneOrMultipleUser">
-                                <option>Multiple</option>
-                            </select>
-                            <input type="integer" name="minimum_amount" placeholder="minimum amount">
-                            <input type="text" name="periode_minimum_amount" placeholder="range minimum amount calcul">
-                            <input type="submit" value="Submit">
-                        </form>
+
+                <div id="register">
+                    <div class="card">
+                        <div class="register">
+                            <h3>Create a discount Code For one user by its IdUser</h3>
+                            <form class="" action="/discountCode" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="integer" name="discount_code_amount" value="" placeholder="reduction amount*" >
+                                    <input type="integer" name="expiration_time" value="" placeholder="expiration time*">
+                                    <input type="hidden" name="OneOrMultipleUser" value="One">
+                                    <input type="integer" name="idUserDiscount_codeBeneficiary" placeholder="id beneficiary*">
+                                </div>
+                                <div class="form-group text-center" id="button_register_normal">
+                                    <input type="submit" name="" value="Register">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="profil_container text-center">
-                <div class="row" style="margin:0;">
-                    <div class="col-md-12 text-center">
-                        <h3>Create a discount Code For one user by its IdUser</h3>
-                        <form class="" action="/discountCode" method="post">
-                            @csrf
-                            <input type="integer" name="discount_code_amount" value="" placeholder="reduction amount %" >
-                            <input type="integer" name="expiration_time" value="" placeholder="expiration time">
-                            <select class="form-control" name="OneOrMultipleUser">
-                                <option>One</option>
-                            </select>
-                            <input type="integer" name="idUserDiscount_codeBeneficiary" placeholder="id beneficiary">
-                            <input type="submit" value="Submit">
-                        </form>
-                    </div>
-                </div>
-            </div>
+                
             <div class="profil_container text-center">
                 <div class="row" style="margin:0;">
                     <div class="col-md-12 text-center">
