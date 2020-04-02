@@ -29,9 +29,8 @@
                         </div>
                     </div>
                 </form>
-                <input type="hidden" name="reportId" id="reportId">
-                <a href="{{ url('report/create/') }}"><button class="float-right" type="submit" style="background-color: red">Report</button></a>
-                @if((session('active_status')->status_user_label == 'Tourist' || session('active_status')->status_user_label == 'Controller') || session('active_status')->status_user_label == 'Seller')
+                <span id="reportId"></span>
+                @if( (isset(session('active_status')->status_user_label))  && session('active_status')->status_user_label == 'Tourist') || session('active_status')->status_user_label == 'Controller' || session('active_status')->status_user_label == 'Seller')
                     <form method="POST" action="{{ url('message/store') }}">
                         @csrf
                         <input type="hidden" name="idAnnounce" id="idAnnounce2">
