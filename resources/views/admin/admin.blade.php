@@ -98,7 +98,7 @@
                     <div class="card">
                         <div class="register">
 
-                            <h3>REPOTRTS</h3>
+                            <h3>REPORTS</h3>
                             @if(!empty($errorReport))
                                 <div class="alert alert-danger" role="alert">
                                     {{ $errorReport }}
@@ -195,7 +195,6 @@
                 </div>
             </div>
         </div>
-
 </div>
 
 <script type="text/javascript">
