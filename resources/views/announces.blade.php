@@ -237,7 +237,7 @@ function addFavorite(idAnnounce, idFavori){
         $('#modal-announce-footer-comments').html(comments);
       }
     });
-    jQuery('#modal-announce').modal('show');
+    $('#modal-announce').modal('show');
   }
 
   function getLocation() {

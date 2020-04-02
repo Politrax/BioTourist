@@ -112,7 +112,9 @@ Route::post('report/store','API\ReportController@store');
 
 Route::post('report/show/showAllMyReports','API\ReportController@showAllMyReports');
 
-Route::post('report/show/admin','API\ReportController@showAllReportsForAdmin');
+Route::post('admin/report/all','API\ReportController@showAllReportsForAdmin');
+
+Route::post('report/destroy','API\ReportController@destroy');
 
 
 //User_Status_CorrespondenceController

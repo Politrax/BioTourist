@@ -34,7 +34,7 @@ class ReportController extends Controller
         );
 
         $this->middleware('apiAdmin')->only(
-            'showAllReportsForAdmin'
+            'showAllReportsForAdmin','destroy'
         );
     }
 
@@ -97,6 +97,40 @@ class ReportController extends Controller
             'reportByDateDesc'      => $reportsOrderByDateDesc
         ]);
 
+    }
+
+    public function destroy(Request $request){
+
+        $this->request = $request;
+
+        if(!$this->verifyIfReportExist()){
+            return response()->json([
+                'message'   => 'The Report doesn\'t exists',
+                'status'    => '400',
+            ]);
+        }
+
+        $this->report->delete();
+
+        return response()->json([
+            'message'   => 'The report has been deleted',
+            'status'    => '200',
+            'report'    => $this->report
+        ]);
+    }
+
+    private function verifyIfReportExist(){
+
+        if($this->request->has('idReportDelete')){
+
+            $this->report = Report::find($this->request->input('idReportDelete'));
+            if($this->report){
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function validateReported(){

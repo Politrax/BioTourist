@@ -19,7 +19,7 @@ class ReportController extends Controller
         );
 
         $this->middleware('admin')->only(
-            'showAllReportsForAdmin'
+            'showAllReportsForAdmin','destroy'
         );
 
     }
@@ -115,7 +115,7 @@ class ReportController extends Controller
         $data['idUser'] = $this->sessionUser->idUser;
         $data['api_token'] = $this->sessionUser->api_token;
 
-        $query = $client->request('POST','http://localhost:8001/api/report/show/admin',
+        $query = $client->request('POST','http://localhost:8001/api/admin/report/all',
             ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
 
@@ -130,8 +130,26 @@ class ReportController extends Controller
      * @param  \App\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Report $report)
+    public function destroy(Request $request, Client $client, $idReport)
     {
-        //
+        $this->sessionUser = $request->session()->get('user');
+
+        $data = request()->all();
+        $data['idUser']     = $this->sessionUser->idUser;
+        $data['api_token']  = $this->sessionUser->api_token;
+        $data['idReportDelete'] = $idReport;
+
+        $query = $client->request('POST','http://localhost:8001/api/report/destroy',
+            ['form_params' => $data]);
+
+        $response = json_decode($query->getBody()->getContents());
+
+
+        if($response->status == '400'){
+
+            return redirect()->route('admin',['errorReport' => 'the Report id doesn\'t exist']);
+        }
+
+        return redirect()->route('admin',['successReport' => 'the Report has been destroy successfully']);
     }
 }
