@@ -18,6 +18,7 @@ class AnnounceController extends Controller
 
     public function __construct(){
         $this->middleware('apiMergeJsonInRequest');
+
     }
 
     public function selectHistorySeller(Request $request){
@@ -148,6 +149,16 @@ class AnnounceController extends Controller
             'lng'    => $citydata['lng'],
             'lat'    => $citydata['lat'],
             'status' => '200'
+        ]);
+    }
+
+    public function selectAll(Request $request){
+        
+        $announce = Announce::all();
+
+        return response()->json([
+            'Announce'   => $announce,
+            'status'    => '200'
         ]);
     }
 
