@@ -148,6 +148,8 @@ Route::post('announce/update','API\AnnounceController@update');
 
 Route::post('announce/historySeller','API\AnnounceController@selectHistorySeller');
 
+Route::post('announce/all','API\AnnounceController@selectAll');
+
 
 Route::post('payment/stripe','API\PaymentController@getidforcard');
 
