@@ -30,7 +30,8 @@
                     </div>
                 </form>
                 <span id="reportId"></span>
-                @if( (isset(session('active_status')->status_user_label))  && session('active_status')->status_user_label == 'Tourist'|| session('active_status')->status_user_label == 'Controller' || session('active_status')->status_user_label == 'Seller')
+                @unless(empty(session('active_status')))
+                @if(session('active_status')->status_user_label == 'Tourist'|| session('active_status')->status_user_label == 'Controller' || session('active_status')->status_user_label == 'Seller')
                     <form method="POST" action="{{ url('message/store') }}">
                         @csrf
                         <input type="hidden" name="idAnnounce" id="idAnnounce2">
@@ -41,6 +42,7 @@
                         <button type="submit">Send</button>
                     </form>
                 @endif
+                @endunless
             </div>
 
             <div class="modal-footer">
