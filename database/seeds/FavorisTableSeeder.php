@@ -18,6 +18,10 @@ class FavorisTableSeeder extends Seeder
             ),
             array(
                 'Users_idUser'          => 1,
+                'Announces_idAnnounce'  => 1,
+            ),
+            array(
+                'Users_idUser'          => 1,
                 'Announces_idAnnounce'  => 2,
             ),
             array(
@@ -26,8 +30,16 @@ class FavorisTableSeeder extends Seeder
             ),
             array(
                 'Users_idUser'          => 1,
-                'Announces_idAnnounce'  => 1,
-            )
+                'Announces_idAnnounce'  => 4,
+            ),
+            array(
+                'Users_idUser'          => 1,
+                'Announces_idAnnounce'  => 5,
+            ),
+            array(
+                'Users_idUser'          => 1,
+                'Announces_idAnnounce'  => 6,
+            ),
         ));
     }
 }
