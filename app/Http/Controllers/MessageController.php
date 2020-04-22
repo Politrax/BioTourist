@@ -61,7 +61,7 @@ class MessageController extends Controller
             ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
 
-        if($response->conversations !== null){
+        if($response->status != 400){
             $conversations = $response->conversations;
         }
 
@@ -80,7 +80,7 @@ class MessageController extends Controller
             ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
 
-        if($response->conversations !== null){
+        if($response->status != 400){
             $conversations = $response->conversations;
         }
         return view('message',["response" => $conversations]);

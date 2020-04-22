@@ -16,7 +16,7 @@ class SessionAuthentication
     public function handle($request, Closure $next)
     {
         if (!$request->session()->has('user')) {
-            return redirect()->route('login');
+            return redirect()->route('/');
         }
         return $next($request);
     }
