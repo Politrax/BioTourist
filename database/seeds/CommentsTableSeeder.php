@@ -29,17 +29,17 @@ class CommentsTableSeeder extends Seeder
                 'Users_idUser'          => 3
             ),
             array(
-                'comment_content'       => 'test1111',
+                'comment_content'       => 'BAD',
                 'comment_note'          => 2,
-                'comment_subject'       => 'test1111test1111',
+                'comment_subject'       => 'note',
                 'comment_date'          => '2020-01-23 10-22-10',
                 'Announces_idAnnounce'  => 2,
                 'Users_idUser'          => 3
             ),
             array(
-                'comment_content'       => 'test2222',
+                'comment_content'       => 'pfffff',
                 'comment_note'          => 2,
-                'comment_subject'       => 'test2222test2222',
+                'comment_subject'       => 'note',
                 'comment_date'          => '2019-11-23 10-22-10',
                 'Announces_idAnnounce'  => 4,
                 'Users_idUser'          => 1

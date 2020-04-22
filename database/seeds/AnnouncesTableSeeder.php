@@ -13,11 +13,11 @@ class AnnouncesTableSeeder extends Seeder
     {
         DB::table('Announces')->insert(array(
             array(
-                'announce_name' => 'Test1',
+                'announce_name' => 'Very pas chere',
                 'announce_is_available' => true,
                 'announce_price' => 23.22,
-                'announce_comment' => 'Test1',
-                'announce_adresse' => 'Test1',
+                'announce_comment' => 'I will send it for pas chere',
+                'announce_adresse' => 'in my home bro',
                 'announce_date' => '2019-11-03 11:00:00',
                 'announce_city' => 'paris',
                 'announce_img' => '',
@@ -30,11 +30,11 @@ class AnnouncesTableSeeder extends Seeder
                 'announce_lot' => 5
             ),
             array(
-                'announce_name' => 'Test2',
+                'announce_name' => 'Only in unity for my fruit',
                 'announce_is_available' => true,
                 'announce_price' => 5.99,
-                'announce_comment' => 'Test2',
-                'announce_adresse' => 'Test2',
+                'announce_comment' => 'Its not expansive',
+                'announce_adresse' => '8 street la vie d\'alloca',
                 'announce_date' => '2019-11-13 11:00:00',
                 'announce_city' => 'paris',
                 'announce_img' => '',
@@ -47,11 +47,11 @@ class AnnouncesTableSeeder extends Seeder
                 'announce_lot' => 10
             ),
             array(
-                'announce_name' => 'Test3',
+                'announce_name' => 'Organic banana',
                 'announce_is_available' => true,
                 'announce_price' => 15.59,
-                'announce_comment' => 'Test3',
-                'announce_adresse' => 'Test3',
+                'announce_comment' => 'Perfect banana mp me if you want a special command',
+                'announce_adresse' => 'Casa de tata',
                 'announce_date' => '2019-11-20 11:00:00',
                 'announce_city' => 'paris',
                 'announce_img' => '',
@@ -81,11 +81,11 @@ class AnnouncesTableSeeder extends Seeder
                 'announce_lot' => 100
             ),
             array(
-                'announce_name' => 'Test5',
+                'announce_name' => 'Je vend des noix de cajou',
                 'announce_is_available' => true,
                 'announce_price' => 23.35,
-                'announce_comment' => 'Test5',
-                'announce_adresse' => 'Test5',
+                'announce_comment' => 'Noix de cajou qui pousse dans mon jardin en grande quantité',
+                'announce_adresse' => '33 avenue des arenes',
                 'announce_date' => '2019-11-03 11:00:00',
                 'announce_city' => 'paris',
                 'announce_img' => '',
