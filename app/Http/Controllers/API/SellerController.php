@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\ApiTokenController;
+use App\Http\Controllers\API\NoApiClass\UsefullController;
 use App\Http\Controllers\Controller;
 use App\password_resets;
 use App\Repositories\SellerRepository;
@@ -21,7 +22,7 @@ class SellerController extends Controller
 
         $this->middleware('apiMergeJsonInRequest');
         $this->middleware('apiTokenAndIdUserExistAndMatch')->only(
-            'update'
+            'update','getSellerInformation'
         );
 
         $this->middleware('apiAdmin')->only(
@@ -45,6 +46,18 @@ class SellerController extends Controller
         $seller = Seller::create($data);
 
         return $seller;
+    }
+
+    public function getSellerInformation(Request $request){
+
+        $this->request = $request;
+
+        $informations = SellerRepository::getSellerDescription($this->request->idUser);
+
+        return response()->json([
+            'status'    => '200',
+            'informations'    =>  $informations
+        ]);
     }
 
     public function updateReverseBioStatus(Request $request){
@@ -78,7 +91,7 @@ class SellerController extends Controller
         ]);
     }
 
-    public function updateSellerDescription(Request $request){
+    public function updateSellerDescription(Request $request, UsefullController $usefullController){
 
         $this->request = $request;
 
@@ -89,10 +102,9 @@ class SellerController extends Controller
 
         $seller = Seller::where('Users_idUser','=',$this->request->input('idUser'))->first();
 
-        $seller->update(['seller_description' => $this->request->input('seller_description')]);
+        $this->updateSellerAttributes($seller, $usefullController);
 
         return response()->json([
-            'message'   => 'The description has been update',
             'status'    => '200',
             'seller'    =>  $seller
         ]);
@@ -122,6 +134,13 @@ class SellerController extends Controller
             'note'      => $sellerCommentsAvgNotesCountComments,
             'sellerComments' => $sellerCommentsAvgNotesCountCommentsOrderByNotes,
         ]);
+    }
+
+    private function updateSellerAttributes($seller, $usefullController){
+
+        $validArray = $usefullController->keepKeysThatWeNeed($this->request->all(), ['seller_description', 'seller_postal_code', 'seller_city', 'seller_adress']);
+        $seller->update($validArray);
+
     }
 
     private function filterCommentsForASeller($comments){

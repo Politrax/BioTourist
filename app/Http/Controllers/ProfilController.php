@@ -16,7 +16,7 @@ class ProfilController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('SessionAuth')->only('index');
+        $this->middleware('SessionAuth')->only('profil');
     }
 
     /**
@@ -27,6 +27,8 @@ class ProfilController extends Controller
 
     public function profil(Client $client, Request $request)
     {
+        $seller = [];
+        $profil = [];
         $data = request()->all();
         if(!$request->session()->has('user')){
 
@@ -42,16 +44,22 @@ class ProfilController extends Controller
 
         $query = $client->request('POST', 'http://localhost:8001/api/user/profil', ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
+
+        $querySeller = $client->request('POST', 'http://localhost:8001/api/seller/getInformation', ['form_params' => $data]);
+        $responseSeller = json_decode($querySeller->getBody()->getContents());
+
+        if($responseSeller->status != '400'){
+            $seller = $responseSeller->informations;
+        }
         //dd($request->session()->all());
-        if ($response->status === '400'){
-            return response()->json(['error' => $response->error]);
+        if ($response->status != '400'){
+            $profil = $response->profil[0];
         }
 
         return view('Profil', [
             'allProfils' => ['Tourist', 'Seller'],
-            'payments' => $response->payments,
             'profil' => $response->profil[0],
+            'seller' => $seller[0]
         ]);
-
     }
 }

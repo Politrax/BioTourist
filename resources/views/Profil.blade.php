@@ -54,10 +54,15 @@
             </form>
           </div>
           <div class="message">
-            <a href="{{ url('message') }}">My messages</a>
+            @if( session('active_status')->status_user_label == 'Seller')
+            <a href="{{ url('message/show/seller') }}">My messages</a>
+            @elseif(session('active_status')->status_user_label == 'Tourist' || session('active_status')->status_user_label == 'Controller')
+              <a href="{{ url('message/show/User') }}">My messages</a>
+            @endif
           </div>
           <button type="button" name="button" onclick="btnEdit()">Edit</button>
         </div>
+
         <div class="card">
           <div id="status">
             <h3>Your status</h3>
@@ -82,6 +87,27 @@
             @endforeach
           </div>
         </div>
+
+          @if(session('active_status')->status_user_label == 'Seller')
+            <div class="card">
+              <div id="password">
+                <h3>Seller Description</h3>
+                @if(session('errorAddStatus'))
+                  <div class="alert alert-danger" role="alert">
+                    {{session('errorAddStatus')}}
+                  </div>
+                @endif
+                  <form  action="{{ url('seller/updateDescription') }}" method="post">
+                    @csrf
+                      <textarea rows='5' class='offset-2 col-sm-8 form-control' cols='33' name='seller_description' placeholder='description of the seller'>{{ $seller->seller_description }}</textarea>
+                      <input type='text' class='offset-2 col-sm-8 form-control' name='seller_adress' placeholder='the sales address' value="{{ $seller->seller_adress }}">
+                      <input type='text' class='offset-2 col-sm-8 form-control' name='seller_city' placeholder='the sales city' value="{{ $seller->seller_city }}">
+                      <input type='number' class='offset-2 col-sm-8 form-control' name='seller_postal_code' placeholder='the sales city' value="{{ $seller->seller_postal_code }}">
+                    <input class="{{ $profile }}" type="submit" id="addStatus" name="button" value="modify Description">
+                  </form>
+              </div>
+             </div>
+          @endif
 
         @if(count($allProfils) >= 1)
           <div class="card">

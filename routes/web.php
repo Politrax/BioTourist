@@ -144,7 +144,7 @@ Route::get('ccart','CartController@countCart')->name('ccart');
 Route::get('qantmore','CartController@qantmore')->name('qantmore');
 Route::get('qantless','CartController@qantless')->name('qantless');
 // Profil
-Route::get('profil', 'ProfilController@profil');
+Route::get('profil', 'ProfilController@profil')->name('profil');
 //Route::get('message', 'ProfilController@message');
 Route::get('favorite', 'ProfilController@favorite');
 // FAQ

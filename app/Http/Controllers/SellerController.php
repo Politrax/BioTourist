@@ -78,11 +78,9 @@ class SellerController extends Controller
         ]);
         $response = json_decode($query->getBody()->getContents());
 
-        dd($response);
-
-        if($response->status === '400')
+        if($response->status === '200')
         {
-            return redirect('login');
+            return redirect('profil');
         }
     }
 
@@ -92,7 +90,10 @@ class SellerController extends Controller
 
         $data['idUser'] = 3;
         $data['api_token'] = '07gNZrFGOnyJjKD5K39OHDtOi2iGu3keNO7GeK1EmmvWVvtuuXppvo1VaS7PcTjSTMO91m9f8lT1s9a8';
-        $data['seller_description'] = 'je suis la nouvelle description';
+        $data['seller_description'] = 'je suis un nouveau vendeur';
+        $data['seller_postal_code'] = 75015;
+        $data['seller_city'] = 'Paris';
+        $data['seller_adress'] = '14 avenue des champs';
 
         $query = $client->request('POST','http://localhost:8001/api/seller/updateDescription', [
             'form_params' => $data

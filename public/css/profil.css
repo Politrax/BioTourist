@@ -82,6 +82,7 @@
   text-transform: uppercase;
   font-size: 13px;
 }
+
 #password input[type=password] {
   padding: 5px 10px;
   width: 60%;
@@ -90,6 +91,52 @@
   background-color: inherit;
   border-bottom: 1px solid black;
 }
+
+#password input[type=number] {
+  padding: 5px 10px;
+  width: 60%;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+}
+
+#password textarea {
+  padding: 5px 10px;
+  width: 60%;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+}
+
+#password input[type=text] {
+  padding: 5px 10px;
+  width: 60%;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  border-bottom: 1px solid black;
+  font-size: 13px;
+}
+
+#password input[type=number]::placeholder{
+  color: black;
+  font-size: 13px;
+}
+
+#password textarea::placeholder{
+  color: black;
+  font-size: 13px;
+}
+
+#password input[type=text]::placeholder {
+  color: black;
+  font-size: 13px;
+}
+
 #password input[type=password]::placeholder {
   color: black;
 }

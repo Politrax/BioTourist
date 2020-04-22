@@ -133,6 +133,8 @@ Route::post('seller/updateDescription','API\SellerController@updateSellerDescrip
 
 Route::post('seller/testSelect','API\SellerController@SelectSellersByCommentsNotes');
 
+Route::post('seller/getInformation','API\SellerController@getSellerInformation');
+
 
 // Announce
 

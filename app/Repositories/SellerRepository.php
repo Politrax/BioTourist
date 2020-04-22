@@ -31,4 +31,12 @@ class SellerRepository extends BaseRepository
             ->get();
     }
 
+    public static function getSellerDescription($idUser){
+
+        return DB::table('Sellers')
+            ->join('Users','Sellers.Users_idUser','Users.idUser')
+            ->where('Sellers.Users_idUser','=',$idUser)
+            ->get();
+    }
+
 }
