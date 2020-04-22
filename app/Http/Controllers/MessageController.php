@@ -52,6 +52,7 @@ class MessageController extends Controller
 
     public function showMessagesOfATouristController(Request $request, Client $client)
     {
+        $conversations = [];
         $this->sessionUser = $request->session()->get('user');
 
         $data['idUser']     = $this->sessionUser->idUser;
@@ -59,11 +60,17 @@ class MessageController extends Controller
         $query = $client->request('POST','http://localhost:8001/api/message/showMessagesOfATouristController',
             ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
-        return view('message',["response" => $response->conversations]);
+
+        if($response->conversations !== null){
+            $conversations = $response->conversations;
+        }
+
+        return view('message',["response" => $conversations]);
     }
 
     public function showMessagesOfASeller(Request $request, Client $client)
     {
+        $conversations = [];
         $this->sessionUser = $request->session()->get('user');
 
         $data['idUser']     = $this->sessionUser->idUser;
@@ -72,7 +79,11 @@ class MessageController extends Controller
         $query = $client->request('POST','http://localhost:8001/api/message/showMessagesOfASeller',
             ['form_params' => $data]);
         $response = json_decode($query->getBody()->getContents());
-        return view('message',["response" => $response->conversations]);
+
+        if($response->conversations !== null){
+            $conversations = $response->conversations;
+        }
+        return view('message',["response" => $conversations]);
     }
 
     private function utilePourPlusTardNePasSupprimer(){
