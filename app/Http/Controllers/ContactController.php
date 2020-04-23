@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Contact;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class ContactController extends Controller
 {
@@ -63,20 +65,13 @@ class ContactController extends Controller
 
         $response = json_decode($query->getBody()->getContents());
 
-        $session = $request->session()->all();
-
-        if (isset($session['user'])) {
-          if ($response->status == '400') {
-            return view('welcome',["fail" => "There is an error please try later !"])->with('session', $session);
-          }
-          return view('welcome',["success" => "Your message has been sent !"])->with('session', $session);
-        }
-
-
         if ($response->status == '400') {
-          return view('welcome',["fail" => "There is an error please try later !"]);
+            Session::flash('fail','There is an error please try later !');
+            return redirect('/');
         }
-        return view('welcome',["success" => "Your message has been sent !"]);
+            Session::flash('success','Your message has been sent !');
+
+            return redirect('/');
     }
 
     /**
@@ -98,9 +93,13 @@ class ContactController extends Controller
 
         $response = json_decode($query->getBody()->getContents());
 
-        dd($response);
+        if ($response->status == '400') {
+            Session::flash('fail','There is an error please try later !');
+            return redirect('/');
+        }
+        Session::flash('success','Your message has been sent !');
 
-        return view('testContact',["response" => $response]);
+        return redirect('/');
     }
 
     public function ContactsOfAUser(Request $request, Client $client){
@@ -117,7 +116,7 @@ class ContactController extends Controller
 
         dd($response);
 
-        return view('testContact',["response" => $response]);
+        return route('profil',["fail" => "There is an error please try later !"])->with('session', $session);
     }
 
     /**

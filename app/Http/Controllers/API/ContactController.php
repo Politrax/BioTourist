@@ -36,15 +36,14 @@ class ContactController extends Controller
 
         $this->request = $request;
 
-        $emailExistingOnlyIfUserAuthentified = $this->request->input('contact_email');
+        $validator = $this->validateContact();
 
-        $validator = $this->validateContact($emailExistingOnlyIfUserAuthentified);
 
         if($validator->original['status'] == '400') {
             return $validator;
         }
 
-        $this->setValidData($emailExistingOnlyIfUserAuthentified, $usefullController);
+        $this->setValidData($usefullController);
 
         $this->contact = Contact::create($this->validData);
         $this->sendCreatedEmail($mail);
@@ -52,7 +51,7 @@ class ContactController extends Controller
         return response()->json([
             'message'   => 'Your message has been sent !',
             'status'    => '200',
-            'check'     => $this->contact,
+            'contact'     => $this->contact,
         ]);
     }
 
@@ -117,29 +116,16 @@ class ContactController extends Controller
         ]);
     }
 
-    private function validateContact($emailExistingOnlyIfUserAuthentified)
+    private function validateContact()
     {
-        if(isset($emailExistingOnlyIfUserAuthentified)){
-            return $this->ValidatorForAnonymous();
-        }
-
-        return $this->ValidatorForAuthenfied();
+        return $this->ValidatorForAnonymousAndAuthentified();
     }
 
-    private function ValidatorForAuthenfied(){
+    private function ValidatorForAnonymousAndAuthentified(){
         $validator = Validator::make($this->request->all(), [
-            'contact_subject'           => 'required|string|max:5',
+            'contact_subject'           => 'required|string|max:250',
             'contact_content'           => 'required|string|max:500',
-        ]);
-
-        return $this->resultValidator($validator);
-    }
-
-    private function ValidatorForAnonymous(){
-        $validator = Validator::make($this->request->all(), [
-            'contact_subject'           => 'required|string|max:5',
-            'contact_content'           => 'required|string|max:500',
-            'contact_email'             => 'required|email|string|max:255',
+            'contact_email'             => 'required|email|string|max:255'
         ]);
 
         return $this->resultValidator($validator);
@@ -160,27 +146,18 @@ class ContactController extends Controller
         ]);
     }
 
-    private function setValidData($emailExistingOnlyIfUserAuthentified, $usefullController) :void
+    private function setValidData($usefullController) :void
     {
-
-        if(isset($emailExistingOnlyIfUserAuthentified)){
-
-            $this->validData = $usefullController->keepKeysThatWeNeed($this->request->all(),
-                ['contact_subject','contact_content','contact_email']
-            );
-        }else{
-
-            $this->validData = $usefullController->keepKeysThatWeNeed($this->request->all(),
-                ['contact_subject','contact_content','contact_email']
-            );
-        }
+        $this->validData = $usefullController->keepKeysThatWeNeed($this->request->all(),
+            ['contact_subject','contact_content','contact_email']
+        );
 
         $this->setValidDataMissing();
     }
 
     private function setValidDataMissing() :void
     {
-        if(!isset($this->validData['contact_email'])){
+        if($this->request->input('idUser') !== 5){
             $this->validData['Users_idUser'] = $this->request->input('idUser');
         }
 
@@ -190,14 +167,8 @@ class ContactController extends Controller
 
     private function sendCreatedEmail(Mail $mail){
 
-        if(isset($this->validData['contact_email'])){
-            $mail->send($this->validData['contact_email'],'ContactCreatedForAnonymousOrUser',['contact' => $this->contact]);
-            $mail->send('bioTourist@gmail.com','ContactCreatedForAdmin',['email' => $this->validData['contact_email'], 'contact' => $this->contact]);
-        }else{
-            $this->setUser();
-            $mail->send($this->user->email,'ContactCreatedForAnonymousOrUser',['user' => $this->user, 'contact' => $this->contact]);
-            $mail->send('bioTourist@gmail.com','ContactCreatedForAdmin',['user' => $this->user, 'contact' => $this->contact]);
-        }
+        $mail->send($this->validData['contact_email'],'ContactCreatedForAnonymousOrUser',['contact' => $this->contact]);
+        $mail->send('bioTourist@gmail.com','ContactCreatedForAdmin',['email' => $this->validData['contact_email'], 'contact' => $this->contact]);
     }
 
     private function setUser(){

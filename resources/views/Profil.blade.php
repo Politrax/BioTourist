@@ -103,7 +103,7 @@
                       <input type='text' class='offset-2 col-sm-8 form-control' name='seller_adress' placeholder='the sales address' value="{{ $seller->seller_adress }}">
                       <input type='text' class='offset-2 col-sm-8 form-control' name='seller_city' placeholder='the sales city' value="{{ $seller->seller_city }}">
                       <input type='number' class='offset-2 col-sm-8 form-control' name='seller_postal_code' placeholder='the sales city' value="{{ $seller->seller_postal_code }}">
-                    <input class="{{ $profile }}" type="submit" id="addStatus" name="button" value="modify Description">
+                    <input class="{{ $profile }}" type="submit" name="button" value="modify Description">
                   </form>
               </div>
              </div>

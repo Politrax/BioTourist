@@ -204,15 +204,15 @@
             <p>HQ address line : 35 bowery street, New York NY 10012 </p>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6 text-center vertical_l">
-            @if(isset($success))
-            <p>{{$success}}</p>
-            @elseif(isset($fail))
-            <p>There is an error please try later !</p>
+            @if(session('fail'))
+            <p>{{  session('fail') }}</p>
+            @elseif(session('success'))
+            <p>{{ session('success') }}</p>
             @endif
-            @if(isset($session['user']))
-            <form class="" action="/contact/storeForAnAuthentifiedUser" method="post">
+            @if(session('user'))
+            <form class="" action="{{ url('/contact/storeForAnAuthentifiedUser') }}" method="post">
             @else
-            <form class="" action="/contact/storeForAnAnonymous" method="post">
+            <form class="" action="{{ url('/contact/storeForAnAnonymous') }}" method="post">
             @endif
               @csrf
               <input type="email" name="contact_email" value placeholder="Email address *" required>
