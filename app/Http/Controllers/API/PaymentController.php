@@ -61,10 +61,10 @@ class PaymentController extends Controller
     public function chargePaymentStripe($request, $tokenfrompost)
     {
         $announces = $request->get('announces');
-        $ordervalue = 0;
-        foreach ($announces as $announce){
-            $ordervalue =  $ordervalue + $announce['announcesammount'] * $announce['quantityorderannounce'];
-        }
+        $ordervalue = 1000;
+        //foreach ($announces as $announce){
+          //  $ordervalue =  $ordervalue + $announce['announcesammount'] * $announce['quantityorderannounce'];
+        //}
 
         $strip = Stripe::make(env('STRIPE_SECRET'));
 
