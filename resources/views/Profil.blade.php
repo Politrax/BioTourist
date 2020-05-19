@@ -99,10 +99,10 @@
                 @endif
                   <form  action="{{ url('seller/updateDescription') }}" method="post">
                     @csrf
-                      <textarea rows='5' class='offset-2 col-sm-8 form-control' cols='33' name='seller_description' placeholder='description of the seller'>{{ $seller->seller_description }}</textarea>
-                      <input type='text' class='offset-2 col-sm-8 form-control' name='seller_adress' placeholder='the sales address' value="{{ $seller->seller_adress }}">
-                      <input type='text' class='offset-2 col-sm-8 form-control' name='seller_city' placeholder='the sales city' value="{{ $seller->seller_city }}">
-                      <input type='number' class='offset-2 col-sm-8 form-control' name='seller_postal_code' placeholder='the sales city' value="{{ $seller->seller_postal_code }}">
+                      <textarea rows='5' class='offset-2 col-sm-8 form-control' cols='33' name='seller_description' placeholder='description of the seller'>{{ $seller[0]->seller_description }}</textarea>
+                      <input type='text' class='offset-2 col-sm-8 form-control' name='seller_adress' placeholder='the sales address' value="{{ $seller[0]->seller_adress }}">
+                      <input type='text' class='offset-2 col-sm-8 form-control' name='seller_city' placeholder='the sales city' value="{{ $seller[0]->seller_city }}">
+                      <input type='number' class='offset-2 col-sm-8 form-control' name='seller_postal_code' placeholder='the sales city' value="{{ $seller[0]->seller_postal_code }}">
                     <input class="{{ $profile }}" type="submit" name="button" value="modify Description">
                   </form>
               </div>
@@ -170,21 +170,6 @@
         <div class="card">
           <div id="order">
             <h3>Order history</h3>
-            @foreach($payments as $payment)
-            <div class="order">
-              <div class="row" style="margin:0;">
-                <div class="col-md-4 text-left">
-                  <p>{{ $payment->announce_name }} n°{{ $payment->idAnnounce  }}</p>
-                </div>
-                <div class="col-md-4 text-center">
-                  <p>{{ $payment->product_name }}</p>
-                </div>
-                <div class="col-md-4 text-right">
-                  <p>{{ $payment->totalAmount }}  {{ $payment->payment_currency }}</p>
-                </div>
-              </div>
-            </div>
-            @endforeach
             <!-- fin  -->
           </div>
         </div>

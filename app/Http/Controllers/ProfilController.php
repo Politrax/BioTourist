@@ -27,7 +27,7 @@ class ProfilController extends Controller
 
     public function profil(Client $client, Request $request)
     {
-        $seller = [];
+        $seller = '';
         $profil = [];
         $data = request()->all();
         if(!$request->session()->has('user')){
@@ -51,6 +51,7 @@ class ProfilController extends Controller
         if($responseSeller->status != '400'){
             $seller = $responseSeller->informations;
         }
+
         //dd($request->session()->all());
         if ($response->status != '400'){
             $profil = $response->profil[0];
@@ -59,7 +60,7 @@ class ProfilController extends Controller
         return view('Profil', [
             'allProfils' => ['Tourist', 'Seller'],
             'profil' => $response->profil[0],
-            'seller' => $seller[0]
+            'seller' => $seller
         ]);
     }
 }
