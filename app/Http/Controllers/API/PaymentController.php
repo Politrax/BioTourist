@@ -79,7 +79,7 @@ class PaymentController extends Controller
             ]);
             $e = 'No error';
             //return $this->addpaymentindb($request, $charge ,$e);
-            return view('welcome');
+            return view('Profil');
         } catch (CardErrorException $e) {
             $charge['status'] = 'failed';
             $charge['currency'] = 'eur';
