@@ -61,10 +61,10 @@ class PaymentController extends Controller
     public function chargePaymentStripe($request, $tokenfrompost)
     {
         $announces = $request->get('announces');
-        $ordervalue = 1000;
-        //foreach ($announces as $announce){
-          //  $ordervalue =  $ordervalue + $announce['announcesammount'] * $announce['quantityorderannounce'];
-        //}
+        $ordervalue = 0;
+        foreach ($announces as $announce){
+            $ordervalue =  $ordervalue + $announce['announcesammount'] * $announce['quantityorderannounce'];
+        }
 
         $strip = Stripe::make(env('STRIPE_SECRET'));
 
@@ -78,7 +78,8 @@ class PaymentController extends Controller
                 'amount' => $ordervalue,
             ]);
             $e = 'No error';
-            return $this->addpaymentindb($request, $charge ,$e);
+            //return $this->addpaymentindb($request, $charge ,$e);
+            return view('welcome');
         } catch (CardErrorException $e) {
             $charge['status'] = 'failed';
             $charge['currency'] = 'eur';
