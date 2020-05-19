@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="form-group text-center" id="button_register_normal">
-                <input type="submit" name="" value="Register">
+                <input type="submit" value="Register">
               </div>
             </div>
 
@@ -105,16 +105,16 @@
               <div class="register">
                 <h3>Seller Informations</h3>
                 <div class='form-group'>
-                  <textarea rows='5'  cols='33' name='seller_description' placeholder='description of the seller*' required></textarea><br>
+                  <textarea rows='5'  cols='33' name='seller_description' placeholder='description of the seller*' ></textarea><br>
                 </div>
                 <div class='form-group'>
-                  <input type='text'  name='seller_adress' placeholder='the sales address*' required>
-                  <input type='text'  name='seller_city' placeholder='the sales city*' required>
-                  <input type='number'  name='seller_postal_code' placeholder='the sales postal code*' required>
+                  <input type='text'  name='seller_adress' placeholder='the sales address*' >
+                  <input type='text'  name='seller_city' placeholder='the sales city*' >
+                  <input type='number'  name='seller_postal_code' placeholder='the sales postal code*' >
                 </div>
               </div>
                 <div class="form-group text-center">
-                  <input type="submit" name="" value="Register">
+                  <input type="submit" value="Register">
                 </div>
             </div>
 

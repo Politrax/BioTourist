@@ -12,3 +12,7 @@ checkButtonTourist.addEventListener('click', () => {
     sellerInformations.style.display = 'none';
     registerInformationTourist.style.display = 'flex';
 })
+
+registerInformationTourist.addEventListener( 'click', () => {
+    console.log(registerInformationTourist)
+})
