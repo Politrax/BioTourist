@@ -109,7 +109,8 @@ class AnnounceController extends Controller
             return $validator;
         }
         $citydata = $this->request->input('cityData');
-        $announces = AnnounceRepository::filterByLngAndLatOrAndCategorie($citydata['lng'], $citydata['lat'], $citydata['categorie']);
+        $range = $this->request->input('range');
+        $announces = AnnounceRepository::filterByLngAndLatOrAndCategorie($citydata['lng'], $citydata['lat'], $range, $citydata['categorie']);
         if(!isset($announces[0])){
             return response()->json([
                 'error'     => 'your city is not valid or you have no announces for this city in  this categorie',
@@ -134,9 +135,9 @@ class AnnounceController extends Controller
         if($validator->original['status'] == '400') {
             return $validator;
         }
-
         $citydata = $this->request->input('cityData');
-        $announces = AnnounceRepository::filterByLngAndLatOrAndCategorie($citydata['lng'],$citydata['lat']);
+        $range = $this->request->input('range');
+        $announces = AnnounceRepository::filterByLngAndLatOrAndCategorie($citydata['lng'],$citydata['lat'], $range);
         if(!isset($announces[0])){
             return response()->json([
                 'error'     => 'your city is not valid or you have no announces for this city',

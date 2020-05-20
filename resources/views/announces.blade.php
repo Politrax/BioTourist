@@ -8,6 +8,8 @@
         <div class="row" style="margin:0;">
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
             <input type="text" name="cityZone" id="cityZone" value="Paris">
+            <input type="number" name="range"  id="range" onchange="change_range_value()" min="0" max="10">
+            <input type="hidden" value="0" name="range_value" id="range_value">
             <button type="submit" onclick="findCityData()">Find</button>
             <button onclick="getLocation()"><i class="fas fa-location-arrow"></i></button>
           </div>
@@ -89,7 +91,7 @@ function findByCity(cityData){
   $.ajax({
     url: '/filterByCity',
     type: 'POST',
-    data: {cityData: cityData[0],  _token: '{{csrf_token()}}'},
+    data: {cityData: cityData[0], range: $('#range_value').val(), _token: '{{csrf_token()}}'},
     dataType: "json",
     success: function(result){
       mymap.removeLayer(this);
@@ -122,7 +124,7 @@ function filterByCategorieProduct(categorie){
       $.ajax({
         url: "/filterByCategorie",
         type: 'POST',
-        data: {cityData: result.geonames[0], _token: '{{csrf_token()}}'},
+        data: {cityData: result.geonames[0], range: $('#range_value').val(), _token: '{{csrf_token()}}'},
         success: function (retour, statut) {
           remplirDivAnnonce(retour.announces);
         },
@@ -263,6 +265,10 @@ function addFavorite(idAnnounce, idFavori){
         remplirDivAnnonce(result.announces);
       }
     });
+  }
+
+  function change_range_value(){
+  $('#range_value').val($('#range').val());
   }
 
   function showError(error) {

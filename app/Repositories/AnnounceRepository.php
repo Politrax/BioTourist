@@ -21,12 +21,19 @@ class AnnounceRepository extends BaseRepository
         return Announce::class;
     }
 
-    public static function filterByLngAndLatOrAndCategorie($lng, $lat, int $idCategorie = 0){
-        $latmax = (float)$lat +1;
-        $latmin = (float)$lat -1;
-        $lngmax = (float)$lng +1;
-        $lngmin = (float)$lng -1;
-        if ($idCategorie == 0){
+    public static function filterByLngAndLatOrAndCategorie(float $lng, float $lat,  int $range = 0, int $idCategorie = 0){
+        $latmax = $lat +1;
+        $latmin = $lat -1;
+        $lngmax = $lng +1;
+        $lngmin = $lng -1;
+        if($range != 0){
+            $R = 6371; //constant earth radius. You can add precision here if you wish
+            $latmax = $lat + rad2deg($range/$R);
+            $latmin = $lat - rad2deg($range/$R);
+            $lngmax = $lng + rad2deg(asin($range/$R) / cos(deg2rad($lat)));
+            $lngmin = $lng - rad2deg(asin($range/$R) / cos(deg2rad($lat)));
+        }
+        if ($idCategorie == 0 || $range != 0){
             return DB::table('Announces')
                 ->select('Announces.*', 'Users.user_name', 'Users.user_surname', 'Users.idUSer')
                 ->leftJoin('Users', 'Announces.Users_idUser', '=', 'Users.idUser')
