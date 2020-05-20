@@ -121,6 +121,8 @@ Route::post('favori/isFavoris','FavoriController@isFavoris');
 
 Route::post('message/store','MessageController@store');
 
+Route::post('message/block','MessageController@block');
+
 Route::get('message/show/seller','MessageController@showMessagesOfASeller');
 
 Route::get('message/show/User','MessageController@showMessagesOfATouristController');

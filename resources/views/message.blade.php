@@ -27,6 +27,15 @@
                       <td>15/04/2020 11:49:05</td>
                       <td>Discussion N°{{$key}}</td>
                       <td><button type="submit" name="button" onclick="seeMessages({{ $key }})">See</button></td>
+
+                      <form action="{{ url('message/block') }}" method="post">
+                      @if($blocked == true)
+                      <td><button type="submit" name="unblock" value="2">unblock</button></td>
+                      @else
+                      <td><button type="submit" name="block" value="1">block</button></td>
+                      @endif
+                      </form>
+
                     </tr>
                     <form action="{{ url('message/store') }}" method="post">
                       @csrf

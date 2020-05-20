@@ -102,6 +102,8 @@ Route::post('favori/isFavoris','API\FavoriController@isFavoris');
 
 Route::post('message/store','API\MessageController@store');
 
+Route::post('message/block','API\MessageController@block');
+
 Route::post('message/showMessagesOfATouristController','API\MessageController@showMessagesOfATouristController');
 
 Route::post('message/showMessagesOfASeller','API\MessageController@showMessagesOfASeller');

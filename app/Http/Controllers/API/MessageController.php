@@ -70,6 +70,35 @@ class MessageController extends Controller
 
     }
 
+    public function block(Request $request, Mail $mail){
+
+        $this->request = $request;
+
+        $validator = $this->validateMessage();
+        if($validator->original['status'] == '400') {
+            return $validator;
+        }
+
+        $this->announce = Announce::find($this->request->input('idAnnounce'));
+
+        if(!isset($this->announce)){
+
+            return response()->json([
+                'message' => '',
+                'status' => '400'
+            ]);
+        }
+
+        $this->message = Message::create($this->validData);
+
+        return response()->json([
+            'message'   => 'You blocked this user',
+            'status'    => '200',
+            'messages'     => $this->message,
+        ]);
+
+    }
+
     public function showMessagesOfATouristController(Request $request){
 
         $this->request = $request;
